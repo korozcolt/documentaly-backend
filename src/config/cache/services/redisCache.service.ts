@@ -10,7 +10,7 @@ export class RedisCacheService {
   }
 
   async set(key: string, value: any, expired?: number) {
-    await this.cache.set(key, value, { ttl: expired });
+    await this.cache.set(key, value, expired);
   }
 
   async del(key: string) {

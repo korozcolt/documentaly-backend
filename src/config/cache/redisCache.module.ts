@@ -9,12 +9,15 @@ import { RedisCacheService } from './services/redisCache.service';
   imports: [
     CacheModule.registerAsync({
       imports: [ConfigModule],
+      useFactory: async (configService: ConfigService) => [
+        {
+          ttl: +configService.get('CACHE_TTL'),
+        },
+        { store: redisStore },
+        { host: configService.get('REDIS_HOST') },
+        { port: configService.get('REDIS_PORT') },
+      ],
       inject: [ConfigService],
-      useFactory: async (configService: ConfigService) => ({
-        store: redisStore,
-        host: configService.get('REDIS_HOST'),
-        port: configService.get('REDIS_PORT'),
-      }),
     }),
   ],
   providers: [RedisCacheService],
