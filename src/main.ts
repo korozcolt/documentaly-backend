@@ -16,8 +16,6 @@ async function bootstrap() {
     optionsSuccessStatus: 204,
   });
 
-  const appConfig: AppConfigService = app.get('AppConfigService');
-
   app.useGlobalPipes(
     new ValidationPipe({
       transform: true,
@@ -38,6 +36,6 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, options);
   SwaggerModule.setup('api', app, document);
 
-  await app.listen(appConfig.port);
+  await app.listen(+process.env.APP_PORT);
 }
 bootstrap();

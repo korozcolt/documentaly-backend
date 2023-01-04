@@ -6,18 +6,18 @@ export class AppConfigService {
   constructor(private configService: ConfigService) {}
 
   get name(): string {
-    return this.configService.get<string>('application.name');
+    return this.configService.get<string>('app.name');
   }
 
   get env(): string {
-    return this.configService.get<string>('application.env');
+    return this.configService.get<string>('app.env');
   }
 
   get url(): string {
-    return this.configService.get<string>('application.host');
+    return this.configService.get<string>('app.host');
   }
 
   get port(): number {
-    return this.configService.get<number>('application.port');
+    return this.configService.get<number>('app.port');
   }
 }

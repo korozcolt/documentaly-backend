@@ -7,8 +7,8 @@ import configuration from './configuration';
 @Module({
   imports: [
     ConfigModule.forRoot({
-      load: [configuration],
       isGlobal: true,
+      load: [configuration],
     }),
   ],
   providers: [ConfigService, AppConfigService],
