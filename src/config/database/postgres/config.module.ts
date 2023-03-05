@@ -8,7 +8,7 @@ import { SequelizeModule } from '@nestjs/sequelize';
     SequelizeModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: () => ({
-        dialect: 'postgres',
+        dialect: 'mysql',
         host: process.env.DATABASE_HOST,
         port: +process.env.DATABASE_PORT,
         username: process.env.DATABASE_USER,

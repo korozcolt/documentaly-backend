@@ -1,5 +1,6 @@
 import { IsEmail, IsEnum, IsNotEmpty, IsString } from 'class-validator';
 
+import { IntersectionType } from '@nestjs/swagger';
 import { UserRole } from '../enums/user-role.enum';
 
 export class CreateUserDto {
@@ -33,3 +34,13 @@ export class CreateUserDto {
   @IsEnum(UserRole)
   role: UserRole;
 }
+
+class AdditionalUserInformation {
+  avatar_url?: string;
+  avatar_key?: string;
+}
+
+export class CreateUserDBDto extends IntersectionType(
+  CreateUserDto,
+  AdditionalUserInformation,
+) {}
