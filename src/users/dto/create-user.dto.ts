@@ -1,4 +1,10 @@
-import { IsEmail, IsEnum, IsNotEmpty, IsString } from 'class-validator';
+import {
+  IsEmail,
+  IsEnum,
+  IsNotEmpty,
+  IsOptional,
+  IsString,
+} from 'class-validator';
 
 import { IntersectionType } from '@nestjs/swagger';
 import { UserRole } from '../enums/user-role.enum';
@@ -17,26 +23,26 @@ export class CreateUserDto {
   email: string;
 
   @IsEmail()
+  @IsOptional()
   secondary_email?: string;
 
   @IsNotEmpty()
   @IsString()
   phone: string;
 
-  avatar_url?: string;
-
-  avatar_key?: string;
-
   @IsNotEmpty()
   @IsString()
   password: string;
 
-  @IsEnum(UserRole)
-  role: UserRole;
+  @IsString()
+  role: string;
 }
 
 class AdditionalUserInformation {
+  @IsOptional()
   avatar_url?: string;
+
+  @IsOptional()
   avatar_key?: string;
 }
 

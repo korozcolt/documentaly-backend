@@ -52,9 +52,6 @@ export class User extends Model {
   is_active: boolean;
 
   @AllowNull(false)
-  @Column({
-    type: 'enum',
-    values: Object.values(UserRole),
-  })
-  role: UserRole;
+  @Column({ validate: { isIn: [['admin', 'user', 'super_admin']] } })
+  role: string;
 }

@@ -6,7 +6,7 @@ import { UsersDao } from './daos/users.dao';
 import { UsersService } from './services/users.service';
 
 @Module({
-  imports: [SequelizeModule.forFeature([User, UsersDao])],
+  imports: [SequelizeModule.forFeature([User])],
   controllers: [UsersController],
   exports: [UsersService],
   providers: [UsersService, UsersDao],
