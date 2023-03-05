@@ -27,7 +27,7 @@ async function bootstrap() {
   app.useGlobalInterceptors(new TransformInterceptor());
 
   const options = new DocumentBuilder()
-    .setTitle('Backend API')
+    .setTitle(`Backend API - ${process.env.APPLICATION_NAME}`)
     .setDescription('API containing all backend endpoints.')
     .setVersion('1.0')
     .addBearerAuth()
@@ -36,6 +36,6 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, options);
   SwaggerModule.setup('api', app, document);
 
-  await app.listen(+process.env.APP_PORT);
+  await app.listen(+process.env.APPLICATION_PORT);
 }
 bootstrap();
